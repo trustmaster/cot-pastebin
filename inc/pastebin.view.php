@@ -50,7 +50,7 @@ if ($sql_paste->rowCount() > 0)
 			'PASTE_USERIP' => $paste_userip,
 			'PASTE_DATE' => $paste_date,
 			'PASTE_EXPIRE' => $paste_expire,
-			'PASTE_TEXT' => '<div class="highlight"><pre class="'.$fa_paste['paste_type'].'">'.$text.'</pre></div>',
+			'PASTE_TEXT' => '<pre class="brush: '.$fa_paste['paste_type'].'">'.$text.'</pre>',
 			'PASTE_DESC' => htmlspecialchars($fa_paste['paste_desc']),
 			'PASTE_DELETE' => $paste_delete,
 			'PASTE_FLAG' => cot_rc_link(cot_url('plug', 'e=pastebin&m=flag&id='.$fa_paste['paste_id']), $L['pastebin_flag']),
@@ -65,7 +65,7 @@ if ($sql_paste->rowCount() > 0)
 			{
 				foreach($tags as $tag)
 				{
-					$tag_u = cot_urlencode($tag, $cfg['plugin']['tags']['translit']);
+					$tag_u = $cfg['plugin']['tags']['translit'] ? cot_translit_encode($tag) : $tag;
 					$tl = $lang != 'en' && $tag_u != urlencode($tag) ? '&tl=1' : '';
 					$t->assign(array(
 						'PASTE_TAGS_ROW_TAG' => $cfg['plugin']['tags']['title'] ? htmlspecialchars(cot_tag_title($tag)) : htmlspecialchars($tag),

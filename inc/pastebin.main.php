@@ -23,7 +23,7 @@ if ($_POST['submit'])
 	$paste_tags = cot_import('pastetags', 'P', 'TXT');
 	$paste_pass1 = cot_import('pastepass1','P','TXT',16);
 	$paste_pass2 = cot_import('pastepass2','P','TXT',16);
-	$paste_text = cot_import('pastetext', 'P', 'HTM');
+	$paste_text = cot_import('pastetext', 'P', 'NOC');
 	if ($paste_expire > 0)
 	{
 		$paste_expire = explode(' ', $paste_expire);
