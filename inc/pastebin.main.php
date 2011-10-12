@@ -33,7 +33,7 @@ if ($_POST['submit'])
 	{
 		$paste_expire = (2629744+$sys['now']);
 	}
-	$paste_private = (!$cfg['plugin']['pastebin']['allowprivate'] && $paste_private == 1) ? 0 : $paste_private;
+	$paste_private = (!$cfg['plugin']['pastebin']['allowprivate'] && $paste_private == 1) ? 0 : (int) $paste_private;
 	$paste_username = (!empty($paste_username)) ? $paste_username : $usr['name'];
 	$paste_pass = (($paste_pass1 == $paste_pass2) && (!empty($paste_pass1) && !empty($paste_pass2))) ? md5($paste_pass1) : '';
 	$paste_pass = (!$cfg['plugin']['pastebin']['allowpass'] && !empty($paste_private)) ? '' : $paste_pass;
