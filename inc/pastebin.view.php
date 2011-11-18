@@ -44,7 +44,15 @@ if ($sql_paste->rowCount() > 0)
 		{
 			$paste_delete = cot_rc_link(cot_url('plug', 'e=pastebin&m=del&id='.$fa_paste['paste_id']), $L['Delete']);
 		}
-		$text = cot_plugin_active('bbcode') ? cot_bbcode_cdata($fa_paste['paste_text']) : htmlspecialchars($fa_paste['paste_text']);
+		if (cot_plugin_active('bbcode'))
+		{
+			require_once cot_incfile('bbcode', 'plug');
+			$text = cot_bbcode_cdata($fa_paste['paste_text']);
+		}
+		else
+		{
+			$text = htmlspecialchars($fa_paste['paste_text']);
+		}
 		$t->assign(array(
 			'PASTE_USER' => $paste_user,
 			'PASTE_USERIP' => $paste_userip,
