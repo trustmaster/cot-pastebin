@@ -4,8 +4,8 @@
 Code=pastebin
 Name=Pastebin
 Description=Pastebin for posting code snippets
-Version=1.1
-Date=2011-03-18
+Version=1.1.1
+Date=2011-11-26
 Author=Kilandor
 Copyright=Copyright (c) 2009-2011 Jason Booth, Cotonti Team
 Notes=Requires a CAPTCHA plugin

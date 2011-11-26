@@ -85,9 +85,9 @@ if ($a == 'pastebin')
 				foreach($tags as $tag)
 				{
 					$tag_t = $cfg['plugin']['tags']['title'] ? cot_tag_title($tag) : $tag;
-					$tag_u = cot_urlencode($tag, $cfg['plugin']['tags']['translit']);
-					$tl = $lang != 'en' && $tag_u != urlencode($tag) ? '&tl=1' : '';
-					$tag_list .= cot_rc_link(cot_url('plug', 'e=tags&a=pastebin&t='.$tag_u.$tl), $tag_t) . ' ';
+					$tag_u = $cfg['plugin']['tags']['translit'] ? cot_translit_encode($tag) : $tag;
+					$tl = $lang != 'en' && $tag_u != $tag ? 1 : null;
+					$tag_list .= cot_rc_link(cot_url('plug', array('e'=> 'tags', 'a' => 'pastebin', 't' => $tag_u, 'tl' => $tl)), $tag_t) . ' ';
 				}
 				$row['paste_title'] = (!empty($row['paste_title'])) ? $row['paste_title'] : $row['paste_id'];
 				$t->assign(array(
